@@ -12,38 +12,34 @@ public class Main {
     public void calculator() {
         String menuBorder = String.valueOf('*').repeat(20);
         Scanner scanner = new Scanner(System.in);
-        boolean exit = true;
         values values;
 
-        while (exit) {
+        while (true) {
             menu(menuBorder);
 
             System.out.print("\nEnter the function: ");
             String option = scanner.next();
 
+            if (option.equals("0")) {
+                break;
+            }
+
+            values = getValues(scanner);
             switch (option) {
                 case "1":
-                    values = getValues(scanner);
                     System.out.println(sum(values.num1(), values.num2()));
                     break;
                 case "2":
-                    values = getValues(scanner);
                     System.out.println(subtract(values.num1(), values.num2()));
                     break;
                 case "3":
-                    values = getValues(scanner);
                     System.out.println(multiply(values.num1(), values.num2()));
                     break;
                 case "4":
-                    values = getValues(scanner);
                     System.out.println(divide(values.num1(), values.num2()));
                     break;
                 case "5":
-                    values = getValues(scanner);
                     System.out.println(percentage(values.num2(), values.num1()));
-                    break;
-                case "0":
-                    exit = false;
                     break;
                 default:
                     System.out.println("Invalid option, choose the right option.");
